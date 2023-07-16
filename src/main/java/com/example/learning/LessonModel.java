@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class LessonModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	Integer id;
 	@Column(name = "course_id")

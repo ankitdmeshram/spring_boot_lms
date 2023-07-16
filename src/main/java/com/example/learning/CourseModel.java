@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class CourseModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	Integer id;
 	@Column(name = "course_name")
@@ -97,6 +97,24 @@ public class CourseModel {
 	}
 	public void setupdated_at(String updated_at) {
 		this.updated_at = updated_at;
+	}
+
+	public CourseModel(String course_name, String course_description, Long course_discount_price, Long course_price,
+			Long course_extended_duration, Long course_duration, String course_image, String course_instructor) {
+		super();
+		this.course_name = course_name;
+		this.course_description = course_description;
+		this.course_discount_price = course_discount_price;
+		this.course_price = course_price;
+		this.course_extended_duration = course_extended_duration;
+		this.course_duration = course_duration;
+		this.course_image = course_image;
+		this.course_instructor = course_instructor;
+	}
+	
+	
+	public CourseModel() {
+		super();
 	}
 	
 }

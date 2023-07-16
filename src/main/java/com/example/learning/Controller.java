@@ -2,10 +2,10 @@ package com.example.learning;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -29,11 +29,28 @@ public class Controller {
 		return fetchCourseService.findAll();
 	}
     
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(path="addcourse")
+	CourseModel addCourses(@RequestBody CourseModel course) {
+   	fetchCourseService.saveAndFlush(course);
+    	return course;
+	}
+    
     @CrossOrigin(origins = "http://localhost:4200")
   	@GetMapping(path="lessons")
   	List<LessonModel> getLessons() {
   		return fetchLessonService.findAll();
+  		
   	}
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(path="addlesson")
+	LessonModel addLesson(@RequestBody LessonModel lesson) {
+   	fetchLessonService.saveAndFlush(lesson);
+    	return lesson;
+	}
+    
     
     @CrossOrigin(origins = "http://localhost:4200")
   	@GetMapping(path="myorders")
